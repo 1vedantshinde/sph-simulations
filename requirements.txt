@@ -1,0 +1,8 @@
+# Core dependencies
+numpy>=2.0
+scipy>=1.10
+matplotlib>=3.7
+
+# GPU support (optional) — uncomment and match your CUDA version
+# cupy-cuda12x>=13.0   # CUDA 12.x
+# cupy-cuda11x>=13.0   # CUDA 11.x
