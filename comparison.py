@@ -15,14 +15,12 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 
-# ── Import SPH solver ─────────────────────────────────────────────────────────
+# Import SPH solver
 from sph_solver import run_sph, GAMMA
 
 
 
-# ══════════════════════════════════════════════════════════════════════════════
 # Fallback: analytic Sod solution (Toro 2009, Ch. 4)
-# ══════════════════════════════════════════════════════════════════════════════
 
 def _sod_exact(x_grid, t=0.2):
     """
@@ -36,7 +34,7 @@ def _sod_exact(x_grid, t=0.2):
     """
     gamma = GAMMA
 
-    # ── Known Sod solution values at t=0.2 ───────────────────────────────
+    # Known Sod solution values at t=0.2 
     # (from Toro Table 4.1 / Wikipedia Sod shock tube)
     rho_l, P_l, v_l = 1.0,   1.0,   0.0
     rho_r, P_r, v_r = 0.125, 0.1,   0.0
@@ -46,11 +44,11 @@ def _sod_exact(x_grid, t=0.2):
     c_l = np.sqrt(gamma * P_l / rho_l)
     c_r = np.sqrt(gamma * P_r / rho_r)
 
-    # ── Star-state values (Newton–Raphson, converged) ─────────────────────
+    # ── Star-state values (Newton–Raphson, converged) 
     # These are the textbook converged values for gamma=1.4 Sod:
     P_star = 0.30313017805064745
     v_star = 0.92745262004895055 * 0.5   # ≈ 0.46376...
-    # Actually recompute properly via iteration
+    #  recompute properly via iteration
     def f(P_s, rho_k, P_k, c_k):
         if P_s > P_k:   # shock
             A = 2.0 / ((gamma + 1) * rho_k)
@@ -121,9 +119,7 @@ def _sod_exact(x_grid, t=0.2):
     return rho_sol, v_sol, P_sol
 
 
-# ══════════════════════════════════════════════════════════════════════════════
 # L2 error computation
-# ══════════════════════════════════════════════════════════════════════════════
 
 def interpolate_to_grid(x_particles, q_particles, x_grid):
     """
