@@ -1,6 +1,8 @@
 # SPH Sod Shock Tube Simulation
 
-A GPU-accelerated Smoothed Particle Hydrodynamics (SPH) solver for the 1-D Sod shock tube problem, validated against an exact Riemann solution.
+A GPU-accelerated (work in progress) Smoothed Particle Hydrodynamics (SPH) solver for the 1-D Sod shock tube problem, validated against a Riemann (approximate) solution.
+
+Results have not been officially validated but they match the expected behaviour.
 
 ---
 
